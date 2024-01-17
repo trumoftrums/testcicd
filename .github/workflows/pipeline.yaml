@@ -45,14 +45,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to server
+      - name: Deploy localhost
         run: |
           # Pull image mà được push lên DockerHub bên trên
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nestjs-test:${{ github.sha }}
-
-          # Dừng và gỡ bỏ container hiện tại (nếu có)
-          # docker stop nestjs-test-container
-          # docker rm nestjs-test-container 
+          docker pull nghiembao/nestjs-test
 
           # Chạy container mới với image đã pull về bên trên
-          docker run -d -p 80:3000 --name nestjs-test-container ${{ secrets.DOCKERHUB_USERNAME }}/nestjs-test:${{ github.sha }}
+          docker run -d -p 80:3000 --name nestjs-test-container nghiembao/nestjs-test
