@@ -51,8 +51,8 @@ jobs:
           docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nestjs-test:${{ github.sha }}
 
           # Dừng và gỡ bỏ container hiện tại (nếu có)
-          docker stop nestjs-test-container
-          docker rm nestjs-test-container 
+          # docker stop nestjs-test-container
+          # docker rm nestjs-test-container 
 
           # Chạy container mới với image đã pull về bên trên
           docker run -d -p 80:3000 --name nestjs-test-container ${{ secrets.DOCKERHUB_USERNAME }}/nestjs-test:${{ github.sha }}
